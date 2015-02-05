@@ -1,0 +1,45 @@
+TABLES:
+
+orders
+	About:
+		belongs to: menu items
+		belongs to: partys
+
+	Columns:
+		ID -SERIAL-PRIMARY KEY
+		party_id -INT
+		menu_items - INT
+
+
+partys
+	About:
+		has many: orders
+		has many: menu items through: orders
+
+	Columns:
+		ID -SERIAL-PRIMARY KEY
+		patrons - INT
+		paid - BOOLEAN
+
+
+
+menu_items
+	About:
+		has many: orders
+		has many: partys through: orders
+
+	Columns:
+		ID - SEARIAL- PRIMARY KEY
+		name - VARCHAR
+		menu_category - VARCHAR
+		description - TEXT
+		price - REAL
+		gluten_free - BOOLEAN
+		nuts_free - BOOLEAN
+		dairy_free - BOOLEAN
+		vegitarian - BOOLEAN
+		vegan - BOOLEAN
+
+
+
+

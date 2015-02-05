@@ -1,0 +1,35 @@
+TABLES:
+
+PARTYS
+	Columns:
+		ID -SERIAL-PRIMARY KEY
+		table_id -
+		order_id
+
+ORDERS
+	Columns:
+		ID -SERIAL-PRIMARY KEY
+		order_id
+		table_id
+		menu_item_id - INT
+TABLES
+	Columns:
+		ID - SERIAL - PRIMARY KEY
+		available - BOOLEAN
+		max_seats - INT
+MENU_ITEMS
+	Columns:
+		ID - SEARIAL- PRIMARY KEY
+		name - VARCHAR
+		menu_category - VARCHAR
+		description - TEXT
+		price - NUMERIC
+		gluten_free - BOOLEAN
+		nuts_free - BOOLEAN
+		dairy_free - BOOLEAN
+		vegitarian - BOOLEAN
+		vegan - BOOLEAN
+
+
+
+

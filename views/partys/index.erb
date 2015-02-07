@@ -1,9 +1,8 @@
-<h2>partys</h2>
+<h2>PARTIES</h2>
 
 
-<ul>
 	<% @parties.each do |party| %>
-	<li><a href="/partys/<%= party.id %>"><%= party.id %></a></li>
+	<h3>Party: <a href="/partys/<%= party.id %>"><%= party.id %></a>, Table: <%= party.table_id %></h3>
 	<% end %>
 
 </ul>

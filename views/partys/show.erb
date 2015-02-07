@@ -1,0 +1,13 @@
+<h2>PARTY <%= @party.id %></h2>
+
+<h3><a href="/partys/<%= @party.id %>/edit">Edit Party Information</a></h3>
+
+<h3><a href = "/orders/<%= @party.id %>/new">Add New Orders</a></h3>
+
+<h3>Notes</h3>
+<p><%= @party.notes %></p>
+
+<h3>Orders:</h3>
+
+<a href="/partys/:id/checkout">Checkout</a>
+

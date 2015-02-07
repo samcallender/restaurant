@@ -1,0 +1,19 @@
+<h2>Party <%= @party.id %></h2>
+
+<div>
+	<h3>Summary</h3>
+	 <% @party.menu_items.each do |item| %>
+        <p> <%= item.name %></p>
+     <% end %>
+	<h3>Add Items</h3>
+</div>
+
+<div>
+	<% @menu_items.each do |menu_item| %>
+	<form action="/orders/<%= @party.id %>/new" method="POST">
+		<input name="order[menu_item_id]" type="hidden" value="<%= menu_item.id %>" />
+		<input name="order[party_id]" type="hidden" value="<%= @party.id %>" />
+	    <input type="submit" value="<%= menu_item.name %>">
+	</form>
+	<% end %>
+</div>

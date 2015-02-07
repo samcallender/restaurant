@@ -1,6 +1,8 @@
 require 'bundler'
 Bundler.require
 
+enable :sessions
+
 ActiveRecord::Base.establish_connection(
   adapter: "postgresql",
   database: "restaurant_db"
@@ -23,21 +25,58 @@ get "/menu_items" do
 	erb :'menu_items/index'
 end
 
-get "menu_items/:id" do
+get "/menu_items/new" do
+
+	erb :'menu_items/new'
+end
+
+get "/menu_items/:id" do |id|
+	@menu_item = Menu_item.find(id)
 
 	erb :'menu_items/show'
 end
 
+post "/menu_items" do
+	menu_item = Menu_item.create(params[:menu_item])
+
+	redirect to "/menu_items/#{menu_item.id}"
+end
+
+get "/menu_items/:id/edit" do |id|
+	@menu_item = Menu_item.find(id)
+
+	erb :'menu_items/edit'
+end
+
+patch '/menu_items/:id' do
+	menu_item = Menu_item.find(params[:id])
+	menu_item.update(params[:menu_item])
+
+	redirect to "/menu_items/#{params[:id]}"
+end
+
+delete "/menu_items/:id" do
+	menu_item = Menu_item.find(params[:id])
+	menu_item.destroy
+
+	redirect to "/menu_items"
+end
+
+
 # PARTYS
+
 get "/partys" do
+	@partys = Party.all
 
 	erb :'partys/index'
 end
 
-get "partys/:id"
+get "/partys/:id" do
 
 	erb :'partys/show'
 end 
+
+
 
  # Default route
   get "/welcome" do

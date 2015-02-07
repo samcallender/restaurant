@@ -1,12 +1,11 @@
-<h2>Add a New Menu Item</h2>
-
-
-<form action="/menu_items" method="POST">
+<div id="form_edit_item">
+<h2>EDIT: <%= @menu_item.name %></h2>
+<form action="/menu_items/<%= @menu_item.id %>" method="POST">
   <fieldset>
    <legend>Food Information</legend>
-   <input type="text" name="menu_item[name]" placeholder="Name"><br>
+   <input type="text" name="menu_item[name]" placeholder="<%= @menu_item.name %>"><br>
    <legend>Category</legend>
-   <select name="menu_item[menu_category]"> 
+   <select name="menu_item[menu_category]" default="<%= @menu_item.menu_category %>"> 
        <option>Small Plates</option>
        <option>Special Features</option>
        <option>Drinks</option>
@@ -42,5 +41,12 @@
    <input id="vegan" name="menu_item[vegan]" type="checkbox" value="true" /><br>
 
  </fieldset>
+ <input type="hidden" name="_method" value="PATCH">
  <input type="submit">
 </form>
+
+<form action="/menu_items/<%= @menu_item.id %>" method="POST">
+  <input type="hidden" name="_method" value="DELETE">
+  <input type="submit" value="Delete Menu_item">
+</form>
+</div>

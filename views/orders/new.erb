@@ -77,7 +77,7 @@
 			<form class="ordereditemsform" action="/orders/<%= @party.id %>" method='POST'>
 	        	<input id="delete" type="hidden" name="menuitem[id]" value="<%= item.id%>">
 	            <input id="delete" type="hidden" name="_method" value="DELETE">
-	            <input class="deletebutton" id="delete" type="submit" value="Delete">
+	            <input class="btn-menuitem-delete" id="delete" type="submit" value="Delete">
 	        </form>
 	     <% end %>	
 	</div>

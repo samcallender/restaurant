@@ -6,6 +6,7 @@
 
 body {
 	background-color: #595c6f;
+	background-image: url('/images/bamboo-texture.jpg');
 	font-family: courier;
 	color: #fff3e5;
 	font-size: 16px;
@@ -141,12 +142,13 @@ hr {
 #checkout {
 	margin: 0 auto;
 	text-align: center;
+	font-family: courier;
 }
 
 #checkout a {
-	color: #2bb4c3;
+	color: #272822;
 	font-style: bold;
-	font-size: 28px;
+	font-size: 32px;
 	text-decoration: underline;
 }
 
@@ -155,7 +157,72 @@ hr {
 	border-radius : 11px;
 	moz-border-radius : 11px;
 	font-size : 16px;
-	color : #ffffff;
+	color : #fff3e5;
 	padding : 5px 15px;
 	background : #272822;
 }
+
+.btn-menuitem:hover {
+	border : solid 0px #006fff;
+	border-radius : 11px;
+	moz-border-radius : 11px;
+	font-size : 16px;
+	color : #2bb4c3;
+	padding : 5px 15px;
+	background : #272822;
+}
+
+.btn-menuitem-delete {
+	margin-top: 0px;
+	border : solid 0px #006fff;
+	border-radius : 11px;
+	moz-border-radius : 11px;
+	font-size : 12px;
+	color : #ff5f55;
+	padding : 5px 15px;
+	background : #272822;
+}
+
+.btn-menuitem-delete:hover {
+	margin-top: 0px;
+	border : solid 0px #006fff;
+	border-radius : 11px;
+	moz-border-radius : 11px;
+	font-size : 12px;
+	color : #ff5f55;
+	padding : 5px 15px;
+	background : #2bb4c3;
+}
+
+@media (max-width: 900px) {
+  .ordersummary{
+	float: none;
+	width: 100%;
+	text-align: center;
+	}
+}
+
+@media (max-width: 450px) {
+	h1	{
+	text-align: center;
+	}
+	.orderitem {
+	display: block;
+	width: 90%;
+	max-width: 100%;
+	margin: 0 auto;
+	margin-bottom: 10px;
+	text-align: center;
+	} 
+	.btn-menuitem {
+	display: block;
+	margin: 0 auto;
+	width: 100%;
+	padding: 15 10 15 10;
+	}
+	.btn-menuitem:hover {
+	padding: 15 10 15 10;
+	}
+}
+
+

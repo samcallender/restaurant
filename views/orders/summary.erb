@@ -1,0 +1,15 @@
+<h1>ORDER SUMMARY: Party <%= @party.id %></h1>
+
+	<div>
+		<h2>Itemized Summary</h2>
+		<% @party.menuitems.uniq.each do |item| %>
+		<% count = @party.menuitems.where(name: item.name).count %>
+		<p><%= item.name %>...$<%= "%.2f" % item.price %>...Qt: <%= count %></p>
+		<% end %>
+	</div>
+
+	<div>
+		<h2>TOTAL</h2>
+		<% total = @party.menuitems.sum(:price)%>
+		<p>$<%= total %></p>  
+	</div>

@@ -111,6 +111,14 @@ delete '/orders/:id' do |id|
   redirect to "/orders/#{party.id}/new"
 end
 
+# checkout and receipt routes
+get '/orders/:id/summary'do |id|
+	@party = Party.find(id)
+  	@menuitems = Menuitem.all
+	erb :"orders/summary"
+end
+
+
  # Default routes
 
 get '/welcome' do

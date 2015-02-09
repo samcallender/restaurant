@@ -62,7 +62,7 @@
 		<p><%= item.name %>...$<%= "%.2f" % item.price %>...Qt: <%= count %></p>
 		<% end %>
 	</div>
-	<p class="clear" id="checkout"><a href="#">Checkout</a></p>
+	<p class="clear" id="checkout"><a href="/orders/<%= @party.id %>/summary">Checkout</a></p>
 </section>
 
 <hr>

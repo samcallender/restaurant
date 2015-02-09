@@ -12,8 +12,9 @@ body {
 }
 
 main {
-	width: 80%;
+	width: 90%;
 	margin: 0 auto;
+	font-family: Verdana, Geneva, sans-serif;
 }
 
 nav {
@@ -46,13 +47,13 @@ nav li {
 nav li a {
 	color: #fff3e5;
 	text-decoration: none;
-	font-size: 2em;
+	font-size: 3em;
 	font-weight: bold;
-	margin: 10 10 10 10;
+	margin: 10 20 10 20;
 }
 
 a:hover {
-	color: #ff744c;
+	color: #2bb4c3;
 }
 
 input {
@@ -71,10 +72,90 @@ select {
 	margin: 5 0 5 0;
 }
 
+#ordersummary{
+	margin: 0 auto;
+}
+
+.ordersummary{
+	float: left;
+	width: 32%;
+	margin-right: 1%;
+	text-align: center;
+}
+
 #form_edit_item {
 	max-width: 40%;
 	margin: 0 auto;
 	background-color: #272822;
 	text-align: center;
 	padding: 10;
+}
+
+.ordereditems {
+	float: left;
+	padding-right: 10;
+	margin: 0 0 0 0;
+}
+
+.ordereditemsform{
+	margin-bottom: 5px;
+}
+
+.deletebutton{
+	margin-top: 0px;
+
+}
+
+.orderitem{
+	float: left;
+	display: inline-block;
+	max-width: 250px;
+	margin-right: 10px;
+}
+
+hr {
+	float: none;
+	clear: both;
+}
+
+.section-title {
+	float: none;
+	clear: both;
+
+	text-align: center;
+	/*background-color: #272822;*/
+
+	padding: 5 0 5 0;
+}
+
+.ordercat {
+	float: none;
+	clear: both;
+}
+
+.clear{
+	float: none;
+	clear: both;
+}
+
+#checkout {
+	margin: 0 auto;
+	text-align: center;
+}
+
+#checkout a {
+	color: #2bb4c3;
+	font-style: bold;
+	font-size: 28px;
+	text-decoration: underline;
+}
+
+.btn-menuitem {
+	border : solid 0px #006fff;
+	border-radius : 11px;
+	moz-border-radius : 11px;
+	font-size : 16px;
+	color : #ffffff;
+	padding : 5px 15px;
+	background : #272822;
 }

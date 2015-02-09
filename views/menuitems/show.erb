@@ -1,0 +1,14 @@
+<h2><%= @menuitem.name %></h2>
+
+<ul>
+	<li>Category: <%= @menuitem.menu_category%></li>
+	<li>Description: <%= @menuitem.description %></li>
+	<li>Price: <%= @menuitem.price %></li>
+	<li>Gluten Free: <%= @menuitem.gluten_free %></li>
+	<li>Nuts Free: <%= @menuitem.nuts_free %></li>
+	<li>Dairy Free: <%= @menuitem.dairy_free %></li>
+	<li>Vegetarian: <%= @menuitem.vegetarian %></li>
+	<li>Vegan: <%= @menuitem.vegan %></li>
+</ul>
+
+<a href="/menuitems/<%= @menuitem.id %>/edit">Edit</a>

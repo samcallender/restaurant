@@ -1,5 +1,5 @@
 <h2>Edit Party <%= @party.id %></h2>
-<form action="/partys/<%= @party.id %>" method="POST">
+<form action="/parties/<%= @party.id %>" method="POST">
 	<legend>Select Table Number</legend>
 	<select name="party[table_id]">
 		<option>1</option>
@@ -57,7 +57,7 @@
 	<input type="submit">
 </form>
 
-<form action="/partys/<%= @party.id %>" method="POST">
+<form action="/parties/<%= @party.id %>" method="POST">
   <input type="hidden" name="_method" value="DELETE">
   <input type="submit" value="Delete Party">
 </form>

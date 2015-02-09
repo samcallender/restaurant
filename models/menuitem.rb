@@ -1,4 +1,4 @@
-class Menu_item < ActiveRecord::Base
+class Menuitem < ActiveRecord::Base
 	has_many :orders
 	has_many :parties, through: :orders
 end

@@ -8,98 +8,92 @@ ActiveRecord::Base.establish_connection(
   database: "restaurant_db"
 )
 
-require_relative 'models/menu_item'
+require_relative 'models/menuitem'
 require_relative 'models/order'
 require_relative 'models/party'
 
- # Console
-get '/console' do
-    Pry.start(binding)
-    ""
-end
-
 # MENU ITEMS
 
-get '/menu_items' do
-	@menu_items = Menu_item.all
-	erb :'menu_items/index'
+get '/menuitems' do
+	@menuitems = Menuitem.all
+	erb :'menuitems/index'
 end
 
-get '/menu_items/new' do
-	erb :'menu_items/new'
+get '/menuitems/new' do
+	erb :'menuitems/new'
 end
 
-get '/menu_items/:id' do |id|
-	@menu_item = Menu_item.find(id)
-	erb :'menu_items/show'
+get '/menuitems/:id' do |id|
+	@menuitem = Menuitem.find(id)
+	erb :'menuitems/show'
 end
 
-post '/menu_items' do
-	menu_item = Menu_item.create(params[:menu_item])
-	redirect to "/menu_items/#{menu_item.id}"
+post '/menuitems' do
+	menuitem = Menuitem.create(params[:menuitem])
+	redirect to "/menuitems/#{menuitem.id}"
 end
 
-get '/menu_items/:id/edit' do |id|
-	@menu_item = Menu_item.find(id)
-	erb :'menu_items/edit'
+get '/menuitems/:id/edit' do |id|
+	@menuitem = Menuitem.find(id)
+	erb :'menuitems/edit'
 end
 
-patch '/menu_items/:id' do
-	menu_item = Menu_item.find(params[:id])
-	menu_item.update(params[:menu_item])
-	redirect to "/menu_items/#{params[:id]}"
+patch '/menuitems/:id' do
+	menuitem = Menuitem.find(params[:id])
+	menuitem.update(params[:menuitem])
+	redirect to "/menuitems/#{params[:id]}"
 end
 
-delete '/menu_items/:id' do
-	menu_item = Menu_item.find(params[:id])
-	menu_item.destroy
-	redirect to "/menu_items"
+delete '/menuitems/:id' do
+	menuitem = Menuitem.find(params[:id])
+	menuitem.destroy
+	redirect to "/menuitems"
 end
 
 
 # PARTIES
 
-get '/partys' do
+get '/parties' do
 	@parties = Party.all
-	erb :'partys/index'
+	erb :'parties/index'
 end
 
-get '/partys/new' do
-	erb :'partys/new'
+get '/parties/new' do
+	erb :'parties/new'
 end
 
-get '/partys/:id' do |id|
+get '/parties/:id' do |id|
 	@party = Party.find(id)
-	erb :'partys/show'
+	erb :'parties/show'
 end 
 
-post '/partys' do
+post '/parties' do
 	party = Party.create(params[:party])
-	redirect to "/partys/#{party.id}"
+	redirect to "/parties/#{party.id}"
 end
 
-get '/partys/:id/edit' do |id|
+get '/parties/:id/edit' do |id|
 	@party = Party.find(id)
-	erb :'partys/edit'
+	erb :'parties/edit'
 end
 
-patch '/partys/:id' do
+patch '/parties/:id' do
 	party = Party.find(params[:id])
 	party.update(params[:party])
-	redirect to "/partys/#{params[:id]}"
+	redirect to "/parties/#{params[:id]}"
 end
 
-delete '/partys/:id' do
+delete '/parties/:id' do
 	party = Party.find(params[:id])
 	party.destroy
-	redirect to "/partys" 
+	redirect to "/parties" 
 end
 
 # begin the clusterfuck of orders
 
 get '/orders/:id/new' do |id|
 	@party = Party.find(id)
-  	@menu_items = Menu_item.all
+  	@menuitems = Menuitem.all
 	erb :'orders/new'
 end
 
@@ -107,6 +101,14 @@ post '/orders/:id/new' do
   	order = Order.create(params[:order])
   	party = Party.find(order.party_id)
   	redirect to "/orders/#{order.party_id}/new" 
+end
+
+delete '/orders/:id' do |id|
+  menuitem_id = params[:menuitem]["id"]
+  order = Order.find_by(menuitem_id: menuitem_id, party_id: id)
+  order.destroy
+  party = Party.find(id)
+  redirect to "/orders/#{party.id}/new"
 end
 
  # Default routes
@@ -117,4 +119,10 @@ end
 
 get '/*' do
     redirect to("/welcome")
+end
+
+ # Console
+get '/console' do
+    Pry.start(binding)
+    ""
 end

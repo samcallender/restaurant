@@ -1,0 +1,52 @@
+<div id="form_edit_item">
+<h2>EDIT: <%= @menuitem.name %></h2>
+<form action="/menuitems/<%= @menuitem.id %>" method="POST">
+  <fieldset>
+   <legend>Food Information</legend>
+   <input type="text" name="menuitem[name]" placeholder="<%= @menuitem.name %>"><br>
+   <legend>Category</legend>
+   <select name="menuitem[menu_category]"> 
+       <option>Small Plates</option>
+       <option>Special Features</option>
+       <option>Drinks</option>
+       <option>Test</option>
+   </select><br>
+   <legend>Price</legend>
+   <input type="number" name="menuitem[price]" placeholder="0.0"><br>
+   <legend>Description</legend> 
+   <textarea name="menuitem[description]" placeholder="Description"></textarea>
+ </fieldset>
+ <br>
+ <fieldset>
+   <legend>Dietary Concerns</legend>
+
+   <label for="gluten_free">Contains Gluten</label>
+   <input name="menuitem[gluten_free]" type="hidden" value="false" />
+   <input id="gluten_free" name="menuitem[gluten_free]" type="checkbox" value="true" /><br>
+
+   <label for="nuts_free">Contains Nuts</label>
+   <input name="menuitem[nuts_free]" type="hidden" value="false" />
+   <input id="nuts_free" name="menuitem[nuts_free]" type="checkbox" value="true" /><br>   
+
+   <label for="dairy_free">Contains Dairy</label>
+   <input name="menuitem[dairy_free]" type="hidden" value="false" />
+   <input id="dairy_free" name="menuitem[dairy_free]" type="checkbox" value="true" /><br>
+
+   <label for="vegetarian">Vegetarian</label>
+   <input name="menuitem[vegetarian]" type="hidden" value="false" />
+   <input id="vegetarian" name="menuitem[vegetarian]" type="checkbox" value="true" /><br>
+
+   <label for="vegan">Vegan</label>
+   <input name="menuitem[vegan]" type="hidden" value="false" />
+   <input id="vegan" name="menuitem[vegan]" type="checkbox" value="true" /><br>
+
+ </fieldset>
+ <input type="hidden" name="_method" value="PATCH">
+ <input type="submit">
+</form>
+
+<form action="/menuitems/<%= @menuitem.id %>" method="POST">
+  <input type="hidden" name="_method" value="DELETE">
+  <input type="submit" value="Delete Menuitem">
+</form>
+</div>

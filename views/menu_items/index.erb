@@ -1,9 +1,0 @@
-<h2>Menu</h2>
-
-<ul>
-	<% @menu_items.each do |menu_item| %>
-	<li><a class="menuitem" href="/menu_items/<%= menu_item.id %>"><%= menu_item.name %></a></li>
-	<% end %>
-</ul>
-
-<a href="/menu_items/new">Create New Menu Item</a>

@@ -4,7 +4,7 @@
 		<h2>Itemized Summary</h2>
 		<% @party.menuitems.uniq.each do |item| %>
 		<% count = @party.menuitems.where(name: item.name).count %>
-		<p><%= item.name %>..$<%= "%.2f" % item.price %>(ea)..Qt: <%= count %></p>
+		<p><%= item.name %>..£<%= "%.2f" % item.price %>(ea)..Qt: <%= count %></p>
 		<% end %>
 	</div>
 	<div class="summarypagediv" >
@@ -13,9 +13,9 @@
 		<% taxrate = 0.085 %>
 		<% salestax = total * taxrate %>
 		<% ammountdue = salestax + total %>
-			<p>Sub Total: $<%= "%.2f" % total %></p>
-			<p>Sales Tax: $<%= "%.2f" % salestax %><p>
-			<p>Ammount Due: $<%= "%.2f" % ammountdue %></p>
+			<p>Sub Total: £<%= "%.2f" % total %></p>
+			<p>Sales Tax: £<%= "%.2f" % salestax %><p>
+			<p>Ammount Due: £<%= "%.2f" % ammountdue %></p>
 		<% notip = 0 %>
 		<% fifteen = total * 0.15 %>
 		<% eighteen = total * 0.18 %>
@@ -24,11 +24,11 @@
 		<% thirty = total * 0.3%>
 		<p>Suggested Gratuity:</p>
 			<ul>
-				<li>15%: $<%= "%.2f" % fifteen %></li>
-				<li>18%: $<%= "%.2f" % eighteen %></li>
-				<li>20%: $<%= "%.2f" % twenty %></li>
-				<li>25%: $<%= "%.2f" % twentyfive %></li>
-				<li>30%: $<%= "%.2f" % thirty %></li>
+				<li>15%: £<%= "%.2f" % fifteen %></li>
+				<li>18%: £<%= "%.2f" % eighteen %></li>
+				<li>20%: £<%= "%.2f" % twenty %></li>
+				<li>25%: £<%= "%.2f" % twentyfive %></li>
+				<li>30%: £<%= "%.2f" % thirty %></li>
 			</ul>
 	</div>
 </section>
@@ -38,12 +38,12 @@
 	<div>
 		<form action="/parties/<%= @party.id %>/checkout" method="POST">
 			<select name="party[bill_total]" > 
-		       <option value="<%= ammountdue %>">none $<%= "%.2f" % notip %></option>
-		       <option value="<%= ammountdue * 1.15 %>">15%: $<%= "%.2f" % fifteen %></option>
-		       <option value="<%= ammountdue * 1.18 %>">18%: $<%= "%.2f" % eighteen %></option>
-		       <option value="<%= ammountdue * 1.2 %>">20%: $<%= "%.2f" % twenty  %></option>
-		       <option value="<%= ammountdue * 1.25 %>">25%: $<%= "%.2f" % twentyfive %></option>
-		       <option value="<%= ammountdue * 1.3 %>">30%: $<%= "%.2f" % thirty %></option> 
+		       <option value="<%= ammountdue %>">none £<%= "%.2f" % notip %></option>
+		       <option value="<%= ammountdue * 1.15 %>">15%: £<%= "%.2f" % fifteen %></option>
+		       <option value="<%= ammountdue * 1.18 %>">18%: £<%= "%.2f" % eighteen %></option>
+		       <option value="<%= ammountdue * 1.2 %>">20%: £<%= "%.2f" % twenty  %></option>
+		       <option value="<%= ammountdue * 1.25 %>">25%: £<%= "%.2f" % twentyfive %></option>
+		       <option value="<%= ammountdue * 1.3 %>">30%: £<%= "%.2f" % thirty %></option> 
 		   </select><br>
 		   <input type='hidden' name="_method" value="PATCH">
 		   <input class="btn-menuitem" type="submit" value="Confirm Tip &amp; Pay">

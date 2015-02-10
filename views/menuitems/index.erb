@@ -1,9 +1,33 @@
-<h2>Menu</h2>
+<h1>Menu</h1>
 
-<ul>
-	<% @menuitems.each do |menuitem| %>
-	<li><a class="menuitem" href="/menuitems/<%= menuitem.id %>"><%= menuitem.name %></a></li>
-	<% end %>
-</ul>
+<h3 class="clear"><a href="/menuitems/new">Create New Menu Item</a></h3>
 
-<a href="/menuitems/new">Create New Menu Item</a>
+<div class="menuindexdiv">
+	<h2>Small Plates</h2>
+	<ol>
+		<% @menuitems.where("menu_category='Small Plates'").each do |menuitem| %>
+		<li><a class="menuitem" href="/menuitems/<%= menuitem.id %>"><%= menuitem.name %></a></li>
+		<% end %>
+	</ol>
+</div>
+
+<div class="menuindexdiv">
+	<h2>Special Features</h2>
+	<ol>
+		<% @menuitems.where("menu_category='Special Features'").each do |menuitem| %>
+		<li><a class="menuitem" href="/menuitems/<%= menuitem.id %>"><%= menuitem.name %></a></li>
+		<% end %>
+	</ol>
+</div>
+
+<div class="menuindexdiv">
+	<h2>Cocktails</h2>
+	<ol>
+		<% @menuitems.where("menu_category='Drinks'").each do |menuitem| %>
+		<li><a class="menuitem" href="/menuitems/<%= menuitem.id %>"><%= menuitem.name %></a></li>
+		<% end %>
+	</ol>
+</div>
+
+
+

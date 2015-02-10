@@ -1,10 +1,9 @@
-<h2>PARTIES</h2>
-
+<h1>Your Parties</h1>
+<p><a href="/parties/new">Create New Party</a></p>
 
 	<% @parties.each do |party| %>
-	<h3>Party: <a href="/parties/<%= party.id %>"><%= party.id %></a>, Table: <%= party.table_id %></h3>
+	<form action="/parties/<%= party.id %>">
+		<input class="btn-partys" type="submit" value="Party <%= party.id %>">
+	</form>
 	<% end %>
 
-</ul>
-
-<a href="/parties/new">Create New Party</a>

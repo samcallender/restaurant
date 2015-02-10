@@ -1,63 +1,66 @@
-<h2>Edit Party <%= @party.id %></h2>
-<form action="/parties/<%= @party.id %>" method="POST">
-	<legend>Select Table Number</legend>
-	<select name="party[table_id]">
-		<option>1</option>
-		<option>2</option>
-		<option>3</option>
-		<option>4</option>
-		<option>5</option>
-		<option>6</option>
-		<option>7</option>
-		<option>8</option>
-		<option>9</option>
-		<option>10</option>
-		<option>11</option>
-		<option>12</option>
-		<option>13</option>
-		<option>14</option>
-		<option>15</option>
-		<option>16</option>
-		<option>17</option>
-		<option>18</option>
-		<option>19</option>
-		<option>20</option>
-	</select><br>
-	<legend>Select Party Size</legend>
-	<select name="party[patrons]">
-		<option>1</option>
-		<option>2</option>
-		<option>3</option>
-		<option>4</option>
-		<option>5</option>
-		<option>6</option>
-		<option>7</option>
-		<option>8</option>
-		<option>9</option>
-		<option>10</option>
-		<option>11</option>
-		<option>12</option>
-		<option>13</option>
-		<option>14</option>
-		<option>15</option>
-		<option>16</option>
-		<option>17</option>
-		<option>18</option>
-		<option>19</option>
-		<option>20</option>
-	</select>
-	<legend>Checkout Status</legend>
-	<select name="party[paid]">
-		<option>true</option>
-		<option>false</option>
-	</select>
-	<legend>Notes</legend>
-	<input type="text" name="party[notes]" placeholder="<%= @party.notes %>"><br>
-	 <input type="hidden" name="_method" value="PATCH">
-	<input type="submit">
-</form>
 
-<form action="/parties/<%= @party.id %>" method="POST">
-  <input type="hidden" name="_method" value="DELETE">
-  <input type="submit" value="Delete Party">
-</form>
+<div class="menu-form-div">
+	<h2>Edit Party <%= @party.id %></h2>
+	<form action="/parties/<%= @party.id %>" method="POST">
+		<legend>Select Table Number</legend>
+		<select name="party[table_id]">
+			<option>1</option>
+			<option>2</option>
+			<option>3</option>
+			<option>4</option>
+			<option>5</option>
+			<option>6</option>
+			<option>7</option>
+			<option>8</option>
+			<option>9</option>
+			<option>10</option>
+			<option>11</option>
+			<option>12</option>
+			<option>13</option>
+			<option>14</option>
+			<option>15</option>
+			<option>16</option>
+			<option>17</option>
+			<option>18</option>
+			<option>19</option>
+			<option>20</option>
+		</select><br>
+		<legend>Select Party Size</legend>
+		<select name="party[patrons]">
+			<option>1</option>
+			<option>2</option>
+			<option>3</option>
+			<option>4</option>
+			<option>5</option>
+			<option>6</option>
+			<option>7</option>
+			<option>8</option>
+			<option>9</option>
+			<option>10</option>
+			<option>11</option>
+			<option>12</option>
+			<option>13</option>
+			<option>14</option>
+			<option>15</option>
+			<option>16</option>
+			<option>17</option>
+			<option>18</option>
+			<option>19</option>
+			<option>20</option>
+		</select>
+		<legend>Checkout Status</legend>
+		<select name="party[paid]">
+			<option>true</option>
+			<option>false</option>
+		</select>
+		<legend>Notes</legend>
+		<input type="text" name="party[notes]" placeholder="<%= @party.notes %>"><br>
+		 <input type="hidden" name="_method" value="PATCH">
+		<input class="btn-menuitem" type="submit">
+	</form>
+
+	<form action="/parties/<%= @party.id %>" method="POST">
+	  <input type="hidden" name="_method" value="DELETE">
+	  <input class="btn-menuitem-delete" type="submit" value="Delete Party">
+	</form>
+</div>

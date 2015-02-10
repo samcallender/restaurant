@@ -115,12 +115,24 @@ post '/orders/:id/new' do
   	redirect to "/orders/#{order.party_id}/new" 
 end
 
+post '/orders/:id/new#specialfeatures-order' do
+  	order = Order.create(params[:order])
+  	party = Party.find(order.party_id)
+  	redirect to "/orders/#{order.party_id}/new#specialfeatures-order" 
+end
+
+post '/orders/:id/new#cocktails-order' do
+  	order = Order.create(params[:order])
+  	party = Party.find(order.party_id)
+  	redirect to "/orders/#{order.party_id}/new#cocktails-order" 
+end
+
 delete '/orders/:id' do |id|
   menuitem_id = params[:menuitem]["id"]
   order = Order.find_by(menuitem_id: menuitem_id, party_id: id)
   order.destroy
   party = Party.find(id)
-  redirect to "/orders/#{party.id}/new"
+  redirect to "/orders/#{party.id}/new#manageorders"
 end
 
 # checkout and receipt routes

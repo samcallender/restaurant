@@ -1,5 +1,9 @@
-<h1>Receipt</h1>
-<% total = @party.bill_total %>
-<p><%= total %></p>
-<p>Thank you for vising</p>
-<p>...Byeeeeeeeeeeeeeee!</p>
+<div>
+	<h1>Receipt</h1>
+		<% total = @party.bill_total %>
+		<% date = @party.updated_at.strftime "%c" %>
+		<p><%= date %></p>
+		<p>£<%= "%.2f" % total %></p>
+		<p>Thank you for visiting</p>
+		<p>...Byeeeeeeeeeeeeeee!</p>
+</div>

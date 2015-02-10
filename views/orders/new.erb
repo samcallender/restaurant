@@ -4,7 +4,7 @@
 		<h2 class="section-title">Add Items</h2>
 	</div>
 		<div>
-		<h3 class="ordercat">Small Plates</h3>
+		<h3 class="order-item-title">Small Plates</h3>
 		<% @menuitems.where("menu_category='Small Plates'").each do |menuitem| %>
 		<form class="orderitem" action="/orders/<%= @party.id %>/new" method="POST">
 			<input name="order[menuitem_id]" type="hidden" value="<%= menuitem.id %>" />
@@ -13,20 +13,20 @@
 		</form>
 		<% end %>
 	</div>
-	<div>
-		<h3 class="ordercat">Special Features</h3>
+	<div id="specialfeatures-order">
+		<h3 class="order-item-title">Special Features</h3>
 		<% @menuitems.where("menu_category='Special Features'").each do |menuitem| %>
-		<form class="orderitem" action="/orders/<%= @party.id %>/new" method="POST">
+		<form class="orderitem" action="/orders/<%= @party.id %>/new#specialfeatures-order" method="POST">
 			<input name="order[menuitem_id]" type="hidden" value="<%= menuitem.id %>" />
 			<input name="order[party_id]" type="hidden" value="<%= @party.id %>" />
 		    <input class="btn-menuitem" type="submit" value="<%= menuitem.name %>">
 		</form>
 		<% end %>
 	</div>
-	<div>
-		<h3 class="ordercat">Cocktails</h3>
+	<div id="cocktails-order">
+		<h3 class="order-item-title">Cocktails</h3>
 		<% @menuitems.where("menu_category='Drinks'").each do |menuitem| %>
-		<form class="orderitem" action="/orders/<%= @party.id %>/new" method="POST">
+		<form class="orderitem" action="/orders/<%= @party.id %>/new#cocktails-order" method="POST">
 			<input name="order[menuitem_id]" type="hidden" value="<%= menuitem.id %>" />
 			<input name="order[party_id]" type="hidden" value="<%= @party.id %>" />
 		    <input class="btn-menuitem" type="submit" value="<%= menuitem.name %>">
@@ -45,21 +45,21 @@
 		<h3>Small Plates</h3>
 		<% @party.menuitems.where("menu_category='Small Plates'").uniq.each do |item| %>
 		<% count = @party.menuitems.where(name: item.name).count %>
-		<p><%= item.name %>...$<%= "%.2f" % item.price %>...Qt: <%= count %></p>
+		<p><%= item.name %>...£<%= "%.2f" % item.price %>...Qt: <%= count %></p>
 		<% end %>
 	</div>
 	<div class="ordersummary">
 		<h3>Special Features</h3>
 		<% @party.menuitems.where("menu_category='Special Features'").uniq.each do |item| %>
 		<% count = @party.menuitems.where(name: item.name).count %>
-		<p><%= item.name %>...$<%= "%.2f" % item.price %>...Qt: <%= count %></p>
+		<p><%= item.name %>...£<%= "%.2f" % item.price %>...Qt: <%= count %></p>
 		<% end %>
 	</div>
 	<div class="ordersummary">
 		<h3>Cocktails</h3>
 		<% @party.menuitems.where("menu_category='Drinks'").uniq.each do |item| %>
 		<% count = @party.menuitems.where(name: item.name).count %>
-		<p><%= item.name %>...$<%= "%.2f" % item.price %>...Qt: <%= count %></p>
+		<p><%= item.name %>...£<%= "%.2f" % item.price %>...Qt: <%= count %></p>
 		<% end %>
 	</div>
 	<p class="clear" id="checkout"><a href="/orders/<%= @party.id %>/summary">Checkout</a></p>
@@ -68,10 +68,8 @@
 <hr>
 
 <section>
-	<div class="section-title-div">
 		<h2 class="section-title">Manage Orders</h2>
-	</div>
-	<div>
+	<div id="manageorders">
 		 <% @party.menuitems.each do |item| %>
 	        <p class="ordereditems" > <%= item.name %></p>
 			<form class="ordereditemsform" action="/orders/<%= @party.id %>" method='POST'>

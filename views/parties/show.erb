@@ -1,13 +1,21 @@
-<h2>PARTY <%= @party.id %></h2>
 
-<h3><a href="/parties/<%= @party.id %>/edit">Edit Party Information</a></h3>
+<h1>PARTY <%= @party.id %></h1>
+<div class="parties-display">
+	<form action="/parties/<%= @party.id %>/edit">
+	  <input class="btn-partys" type="submit" value="Edit Party">
+	</form>
 
-<h3><a href = "/orders/<%= @party.id %>/new">Add New Orders</a></h3>
+	<form action="/orders/<%= @party.id %>/new">
+	  <input class="btn-partys" type="submit" value="Add Orders">
+	</form>
 
-<h3>Notes</h3>
-<p><%= @party.notes %></p>
+	<form action="/orders/<%= @party.id %>/summary">
+	  <input class="btn-partys" type="submit" value="Checkout">
+	</form>
+</div>
 
-<h3>Orders:</h3>
+<div class="menu-form-div">
+	<h3>Notes:</h3>
 
-<a href="/parties/:id/checkout">Checkout</a>
-
+	<p><%= @party.notes %></p>
+</div>

@@ -21,6 +21,7 @@ CREATE TABLE parties(
 	paid 		    BOOLEAN			NOT NULL,
   table_id    INTEGER,
   notes       TEXT,
+  bill_total  REAL,
 	created_at	TIMESTAMP,
 	updated_at	TIMESTAMP
 	);

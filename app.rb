@@ -83,6 +83,18 @@ patch '/parties/:id' do
 	redirect to "/parties/#{params[:id]}"
 end
 
+patch '/parties/:id/checkout' do
+	party = Party.find(params[:id])
+	party.update(bill_total: params[:party][:bill_total])
+	redirect to "parties/#{party.id}/receipt"
+end
+
+get '/parties/:id/receipt' do |id|
+	@party = Party.find(id)
+	# Pry.start(binding)
+	erb :"parties/receipt"
+end
+
 delete '/parties/:id' do
 	party = Party.find(params[:id])
 	party.destroy
@@ -117,7 +129,6 @@ get '/orders/:id/summary'do |id|
   	@menuitems = Menuitem.all
 	erb :"orders/summary"
 end
-
 
  # Default routes
 
